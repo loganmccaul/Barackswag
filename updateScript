@@ -4,6 +4,6 @@ pkill script.py
 git pull 
 python script.py &
 echo "FINISHED"
-sleep 10s
+sleep 24h
 ./updateScriptit 
 
