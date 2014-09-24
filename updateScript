@@ -5,5 +5,5 @@ git pull
 python script.py &
 echo "FINISHED"
 sleep 10s
-./updateScript
+./updateScriptit 
 
