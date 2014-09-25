@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "RESTARTING"
-pkill script.py
+pkill python
 git pull 
 python script.py &
 echo "FINISHED"
