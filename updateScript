@@ -1,9 +1,9 @@
 #!/bin/sh
 echo "RESTARTING"
-pkill script.py
 git pull 
 python script.py &
 echo "FINISHED"
 sleep 24h
+pkill python
 ./updateScript 
 
