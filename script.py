@@ -77,9 +77,9 @@ def translate(t):
 	t = t.replace(" say"," holla")
 	t = t.replace(" said"," holla")
 	t = t.replace(" ready"," rdy")
-	t = t.replace(" your", " yo")
+	t = t.replace(" your ", " yo ")
 	t = t.replace(" those", " dem")
-	t = t.replace(" phat", " good")
+	t = t.replace(" good ", " phat ")
 	t = t.replace("ng ", "n ")
 	
 	return t
