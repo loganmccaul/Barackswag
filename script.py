@@ -44,7 +44,7 @@ def translate(t):
 	t = t.replace(" speaking"," frontin")
 	t = t.replace(" all "," y'all ")
 	t = t.replace(" countries"," hoods")
-	t = t.replace(" we"," us brothers")
+	t = t.replace(" we "," us brothers ")
 	t = t.replace(" have"," gots")
 	t = t.replace(" big"," big ass")
 	t = t.replace(" have to"," gotta")
