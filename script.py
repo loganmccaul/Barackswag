@@ -31,7 +31,7 @@ def translate(t):
 	t = t.replace(" America "," Amerikuh ")
 	t = t.replace(" minister "," minista ")
 	t = t.replace(" isn't "," aint ")
-	t = t.replace(" to "," ta ")
+	t = t.replace(" to "," 2 ")
 	t = t.replace(" President "," Prez ")
 	t = t.replace(" Obama ", " Obeezy ")
 	t = t.replace(" is "," be ")
@@ -50,7 +50,7 @@ def translate(t):
 	t = t.replace(" have to"," gotta")
 	t = t.replace(" community"," hood")
 	t = t.replace(" this"," dis")
-	t = t.replace(" too"," 2")
+	t = t.replace(" too "," 2 ")
 	t = t.replace(" first"," original gangsta")
 	t = t.replace(" can "," ass can ")
 	t = t.replace(" something"," sumthin")
@@ -84,7 +84,9 @@ def translate(t):
 	t = t.replace(" more", " mo")
 	t = t.replace(" are ", " is ")
 	t = t.replace(" consumers ", " suckas ")
+	t = t.replace(" going ", " finna ")
 	t = t.replace("ng ", "n ")
+
 
 	
 	return t
