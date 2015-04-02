@@ -4,7 +4,6 @@ from tweepy.streaming import StreamListener
 from random import randint
 import tweepy, time, sys
 import json
-import requests
 
 
 CONSUMER_KEY = 'CQNkbsaG4jl8bOQak0RjZkAXg'#keep the quotes, replace this with your consumer key
