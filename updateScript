@@ -1,4 +1,3 @@
-#!/bin/sh
 echo "RESTARTING"
 git pull 
 python script.py &
