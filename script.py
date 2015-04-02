@@ -4,15 +4,20 @@ from tweepy.streaming import StreamListener
 from random import randint
 import tweepy, time, sys
 import json
+import requests
 
 
-CONSUMER_KEY = '6ku8ybz2sqCubq3qtZKmNONNh'#keep the quotes, replace this with your consumer key
-CONSUMER_SECRET = 'N69l4mu0TL9zqwLtuKbG2Il3LqAfeHmxsw0VFOxj1mWKQJrX9v'#keep the quotes, replace this with your consumer secret key
+CONSUMER_KEY = 'CQNkbsaG4jl8bOQak0RjZkAXg'#keep the quotes, replace this with your consumer key
+CONSUMER_SECRET = 'qno72MTcPiZxLZ4ozjdklQGbKOs65vhY0GORGpxmmqbQMqWZuZ'#keep the quotes, replace this with your consumer secret key
 ACCESS_KEY = '357289633-jhKLehdgZLFgoUetUcXk64JH9hfrgKIfrlZPKXFv'#keep the quotes, replace this with your access token
 ACCESS_SECRET = 'KooJ0QAeYl7G1eDxSoP1g7YVphK1KtYMDStTyicHk8JML'#keep the quotes, replace this with your access token secret
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
+
+follow_list = ["2417516252", "1339835893", "29442313", "23022687", "15824288", "2746932876", "113047940", "33750798", "90484508", "15416505", "15745368", "216881337", "58379000", "18906561", "17078632", "65691824", "1180379185"]
+user_lists = ["mclowgan", "hillaryclinton", "sensanders", "tedcruz", "governoromalley", "jimwebbusa", "jebbush", "scottwalker", "govchristie", "govmikehuckabee", "marcorubio", "senrandpaul", "ricksantorum", "governorperry", "bobbyjindal", "carlyfiorina", "realbencarson"]
+
 
 def translate(t):
 	t = t.replace(" house "," hizzle ")
@@ -52,7 +57,7 @@ def translate(t):
 	t = t.replace(" this"," dis")
 	t = t.replace(" too "," 2 ")
 	t = t.replace(" first"," original gangsta")
-	t = t.replace(" can "," ass can ")
+	t = t.replace(" can "," can ")
 	t = t.replace(" something"," sumthin")
 	t = t.replace(" about "," bout ")
 	t = t.replace(" that"," dat")
@@ -85,6 +90,7 @@ def translate(t):
 	t = t.replace(" are ", " is ")
 	t = t.replace(" consumers ", " suckas ")
 	t = t.replace(" going ", " finna ")
+	t = t.replace(" mother ", " motha ")
 	t = t.replace("ng ", "n ")
 
 
@@ -97,7 +103,7 @@ class listener(StreamListener):
     print "listening..."
     def on_data(self, data):
 		tweets = json.loads(data)
-		if tweets["user"]["screen_name"] == "BarackObama":
+		if tweets["user"]["screen_name"].lower() in user_lists:
 			print "retrieving...\n"
 			print tweets["text"] + "\n"
 			print "translating..."
@@ -108,11 +114,12 @@ class listener(StreamListener):
 				if len(tweets["text"]) < 120:
 					print "appending..."
 					rnd = randint(0,7)
-					appStrings = ["", ", nahmean", "", ", shiiiit", "", ", word up", "", ", biatch"]
+					# appStrings = ["", ", nahmean", "", ", shiiiit", "", ", word up", "", ", biatch"]
+					appString = tweets["user"]["screen_name"]
 					tweets["text"] = tweets["text"] + appStrings[rnd]
 					print "successfully appended"
 				print "posting..."
-				api.update_status(tweets["text"])
+				api.update_status(status = tweets["text"])
 				print "succesfully posted"
 				print "### \n\n"
 			else:
@@ -123,9 +130,26 @@ class listener(StreamListener):
         print status
 
 twitterStream = Stream(auth, listener())
-twitterStream.filter(follow=["813286"])
+twitterStream.filter(follow = follow_list)
 
 #Obama ID 813286
+#Hillary ID 1339835893
+#Bernie ID 29442313
+#Cruz ID 23022687
+#OMalley ID 15824288
+#Webb ID 2746932876
+#Bush ID 113047940
+#Walker ID 33750798
+#Christie ID 90484508
+#Huckabee ID 15416505
+#Rubio ID 15745368
+#Paul ID 216881337
+#Santorum ID 58379000
+#Perry ID 18906561
+#Jindal ID 17078632
+#Fiorina ID 65691824
+#Carson ID 1180379185
+
 #My ID 357289633
-#secondary test Id 2417516252
+#Mclowgan test Id 2417516252
 
