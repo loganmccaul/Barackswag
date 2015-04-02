@@ -115,8 +115,8 @@ class listener(StreamListener):
 					print "appending..."
 					rnd = randint(0,7)
 					# appStrings = ["", ", nahmean", "", ", shiiiit", "", ", word up", "", ", biatch"]
-					appString = tweets["user"]["screen_name"]
-					tweets["text"] = tweets["text"] + appStrings[rnd]
+					appStrings = tweets["user"]["screen_name"]
+					tweets["text"] = tweets["text"] + " -" appStrings
 					print "successfully appended"
 				print "posting..."
 				api.update_status(status = tweets["text"])
