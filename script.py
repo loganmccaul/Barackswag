@@ -85,6 +85,7 @@ def translate(t):
 	t = t.replace(" those", " dem")
 	t = t.replace(" good ", " phat ")
 	t = t.replace(" Good ", " Dope ")
+	t = t.replace("Good ", "Dope ")
 	t = t.replace(" more", " mo")
 	t = t.replace(" are ", " is ")
 	t = t.replace(" consumers ", " suckas ")
