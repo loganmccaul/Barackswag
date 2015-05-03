@@ -14,8 +14,8 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
-follow_list = ["2417516252", "1339835893", "29442313", "23022687", "15824288", "2746932876", "113047940", "33750798", "90484508", "15416505", "15745368", "216881337", "58379000", "18906561", "17078632", "65691824", "1180379185"]
-user_lists = ["mclowgan", "hillaryclinton", "sensanders", "tedcruz", "governoromalley", "jimwebbusa", "jebbush", "scottwalker", "govchristie", "govmikehuckabee", "marcorubio", "senrandpaul", "ricksantorum", "governorperry", "bobbyjindal", "carlyfiorina", "realbencarson"]
+follow_list = ["2417516252", "1339835893", "216776631", "23022687", "15745368", "216881337"]
+user_lists = ["mclowgan", "hillaryclinton", "sensanders", "tedcruz", "marcorubio", "senrandpaul"]
 
 
 def translate(t):
@@ -90,7 +90,18 @@ def translate(t):
 	t = t.replace(" consumers ", " suckas ")
 	t = t.replace(" going ", " finna ")
 	t = t.replace(" mother ", " motha ")
-	t = t.replace("ng ", "n ")
+	t = t.replace("'s ", "z ")
+	t = t.replace(" news ", " shizz ")
+	t = t.replace("ers ", "az ")
+	t = t.replace(" meet ", " hook up wit ")
+	t = t.replace(" cruel ", " cold-ass ")
+	t = t.replace(" me ", " mah ")
+	t = t.replace(" speech ", " rap ")
+	t = t.replace(" follow ", " shout out to ")
+	t = t.replace(" anyone ", " ne1 ")
+	t = t.replace(" dad ", " pops ")
+	t = t.replace(" friends", " homies ")
+	t = t.replace("ing ", "in ")
 
 
 	
@@ -112,14 +123,20 @@ class listener(StreamListener):
 			if len(tweets["text"]) < 140:
 				if len(tweets["text"]) < 120:
 					print "appending..."
-					rnd = randint(0,7)
-					# appStrings = ["", ", nahmean", "", ", shiiiit", "", ", word up", "", ", biatch"]
-					appStrings = tweets["user"]["screen_name"]
-					tweets["text"] = tweets["text"] + " -" + appStrings
-					print "successfully appended"
+					usernames = tweets["user"]["screen_name"]
+					tweets["text"] = tweets["text"] + " -" + usernames
+					print "successfully appended username"
+				if len(tweets["text"]) < 125:
+					rnd = randint(0,6)
+					appStrings = ["", ", nahmean", "", ", shiiiit", "", ", word up", ", biatch"]
+					tweets["text"] = tweets["text"] + appStrings[rnd]
+					print "succesfully added ending"
 				print "posting..."
-				api.update_status(status = tweets["text"])
-				print "succesfully posted"
+				if len(tweets["text"]) <= 140:
+					api.update_status(status = tweets["text"])
+					print "succesfully posted"
+				else:
+					print "Tweet too long"
 				print "### \n\n"
 			else:
 				print "tweet too long\n\n"
@@ -133,7 +150,7 @@ twitterStream.filter(follow = follow_list)
 
 #Obama ID 813286
 #Hillary ID 1339835893
-#Bernie ID 29442313
+#Bernie ID 216776631
 #Cruz ID 23022687
 #OMalley ID 15824288
 #Webb ID 2746932876
