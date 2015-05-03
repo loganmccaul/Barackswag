@@ -128,8 +128,8 @@ class listener(StreamListener):
 					tweets["text"] = tweets["text"] + " -" + usernames
 					print "successfully appended username"
 				if len(tweets["text"]) < 125:
-					rnd = randint(0,6)
-					appStrings = ["", ", nahmean", "", ", shiiiit", "", ", word up", ", biatch"]
+					rnd = randint(0,3)
+					appStrings = [", nahmean", ", shiiiit", ", word up", ", biatch"]
 					tweets["text"] = tweets["text"] + appStrings[rnd]
 					print "succesfully added ending"
 				print "posting..."
