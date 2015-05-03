@@ -15,7 +15,7 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 follow_list = ["2417516252", "1339835893", "216776631", "23022687", "15745368", "216881337"]
-user_lists = ["mclowgan", "hillaryclinton", "sensanders", "tedcruz", "marcorubio", "senrandpaul"]
+user_lists = ["mclowgan", "hillaryclinton", "berniesanders", "tedcruz", "marcorubio", "randpaul"]
 
 
 def translate(t):
