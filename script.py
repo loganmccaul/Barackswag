@@ -135,6 +135,7 @@ class listener(StreamListener):
 				print "posting..."
 				if len(tweets["text"]) <= 140:
 					api.update_status(status = tweets["text"])
+					print tweets["text"]
 					print "succesfully posted"
 				else:
 					print "Tweet too long"
