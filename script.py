@@ -97,11 +97,17 @@ def translate(t):
 	t = t.replace(" meet ", " hook up wit ")
 	t = t.replace(" cruel ", " cold-ass ")
 	t = t.replace(" me ", " mah ")
+	t = t.replace("  ")
 	t = t.replace(" speech ", " rap ")
 	t = t.replace(" follow ", " shout out to ")
 	t = t.replace(" anyone ", " ne1 ")
 	t = t.replace(" dad ", " pops ")
 	t = t.replace(" friends", " homies ")
+	t = t.replace(" today ", " todizzle ")
+	t = t.replace(" important ", " impopo ")
+	t = t.repalce("&amp", "&")
+	t = t.replace("&gt", ">")
+	t = t.replace("&lt", "<")
 	t = t.replace("ing ", "in ")
 
 
@@ -122,14 +128,13 @@ class listener(StreamListener):
 			print "successfully translated\n"
 			print tweets["text"] + "\n"
 			if len(tweets["text"]) < 140:
-				if len(tweets["text"]) < 120:
-					print "appending..."
-					usernames = tweets["user"]["screen_name"]
-					tweets["text"] = tweets["text"] + " -" + usernames
-					print "successfully appended username"
-				if len(tweets["text"]) < 125:
-					rnd = randint(0,3)
-					appStrings = [", nahmean", ", shiiiit", ", word up", ", biatch"]
+				print "appending..."
+				usernames = tweets["user"]["screen_name"]
+				tweets["text"] = tweets["text"] + " -" + usernames
+				print "successfully appended username"
+				if len(tweets["text"]) < 130:
+					rnd = randint(0,5)
+					appStrings = [", nahmean", "", "", ", shiiiit", ", word up", ", biatch"]
 					tweets["text"] = tweets["text"] + appStrings[rnd]
 					print "succesfully added ending"
 				print "posting..."
