@@ -119,34 +119,35 @@ class listener(StreamListener):
     print "listening..."
     def on_data(self, data):
 		tweets = json.loads(data)
-		if tweets["user"]["screen_name"].lower() in user_lists:
-			print "retrieving...\n"
-			print tweets["text"] + "\n"
-			print "translating..."
-			tweets["text"] = translate(tweets["text"])
-			print "successfully translated\n"
-			print tweets["text"] + "\n"
-			if len(tweets["text"]) < 140:
-				print "appending..."
-				usernames = tweets["user"]["screen_name"]
-				tweets["text"] = tweets["text"] + " -" + usernames
-				print "successfully appended username"
-				if len(tweets["text"]) < 130:
-					rnd = randint(0,5)
-					appStrings = [", nahmean", "", "", ", shiiiit", ", word up", ", biatch"]
-					tweets["text"] = tweets["text"] + appStrings[rnd]
-					print "succesfully added ending"
-				print "posting..."
-				if len(tweets["text"]) <= 140:
-					api.update_status(status = tweets["text"])
-					print tweets["text"]
-					print "succesfully posted"
+		if "user" in tweets:
+			if tweets["user"]["screen_name"].lower() in user_lists:
+				print "retrieving...\n"
+				print tweets["text"] + "\n"
+				print "translating..."
+				tweets["text"] = translate(tweets["text"])
+				print "successfully translated\n"
+				print tweets["text"] + "\n"
+				if len(tweets["text"]) < 140:
+					print "appending..."
+					usernames = tweets["user"]["screen_name"]
+					tweets["text"] = tweets["text"] + " -" + usernames
+					print "successfully appended username"
+					if len(tweets["text"]) < 130:
+						rnd = randint(0,5)
+						appStrings = [", nahmean", "", "", ", shiiiit", ", word up", ", biatch"]
+						tweets["text"] = tweets["text"] + appStrings[rnd]
+						print "succesfully added ending"
+					print "posting..."
+					if len(tweets["text"]) <= 140:
+						api.update_status(status = tweets["text"])
+						print tweets["text"]
+						print "succesfully posted"
+					else:
+						print "Tweet too long"
+					print "### \n\n"
 				else:
-					print "Tweet too long"
-				print "### \n\n"
-			else:
-				print "tweet too long\n\n"
-			print "listening..."
+					print "tweet too long\n\n"
+				print "listening..."
 		#print tweets["user"]["screen_name"]
     def on_error(self, status):
         print status
