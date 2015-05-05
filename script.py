@@ -97,7 +97,6 @@ def translate(t):
 	t = t.replace(" meet ", " hook up wit ")
 	t = t.replace(" cruel ", " cold-ass ")
 	t = t.replace(" me ", " mah ")
-	t = t.replace("  ")
 	t = t.replace(" speech ", " rap ")
 	t = t.replace(" follow ", " shout out to ")
 	t = t.replace(" anyone ", " ne1 ")
