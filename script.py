@@ -104,7 +104,7 @@ def translate(t):
 	t = t.replace(" friends", " homies ")
 	t = t.replace(" today ", " todizzle ")
 	t = t.replace(" important ", " impopo ")
-	t = t.repalce("&amp", "&")
+	t = t.replace("&amp", "&")
 	t = t.replace("&gt", ">")
 	t = t.replace("&lt", "<")
 	t = t.replace("ing ", "in ")
