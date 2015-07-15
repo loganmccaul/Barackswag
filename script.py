@@ -14,8 +14,8 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
-follow_list = ["2417516252", "1339835893", "216776631", "23022687", "15745368", "216881337", "65691824", "1180379185", "15416505", "58379000"]
-user_lists = ["mclowgan", "hillaryclinton", "berniesanders", "tedcruz", "marcorubio", "randpaul", "carlyfiorina", "realbencarson", "govmikehuckabee", "ricksantorum"]
+follow_list = ["2417516252", "1339835893", "216776631", "23022687", "15745368", "216881337", "65691824", "1180379185", "15416505", "58379000", "89781370", "15824288", "2746932876", "113047940", "1347285918", "432895323", "17078632", "2865560724", "18906561", "25073877", "33750798", "111216929"]
+user_lists = ["mclowgan", "hillaryclinton", "berniesanders", "tedcruz", "marcorubio", "randpaul", "carlyfiorina", "realbencarson", "govmikehuckabee", "ricksantorum", "lincolnchafee", "martinomalley", "jimwebbusa", "jebbush", "chrischristie", "lindseygrahamsc", "bobbyjindal", "governorpataki", "governorperry", "realdonaldtrump", "scottwalker", "drjillstein"]
 
 
 def translate(t):
@@ -126,33 +126,34 @@ class listener(StreamListener):
 		tweets = json.loads(data)
 		if "user" in tweets:
 			if tweets["user"]["screen_name"].lower() in user_lists:
-				print "retrieving...\n"
-				print tweets["text"] + "\n"
-				print "translating..."
-				tweets["text"] = translate(tweets["text"])
-				print "successfully translated\n"
-				print tweets["text"] + "\n"
-				if len(tweets["text"]) < 140:
-					print "appending..."
-					usernames = tweets["user"]["screen_name"]
-					tweets["text"] = tweets["text"] + " -" + usernames
-					print "successfully appended username"
-					if len(tweets["text"]) < 130:
-						rnd = randint(0,5)
-						appStrings = [", nahmean", "", "", ", shiiiit", ", word up", ", biatch"]
-						tweets["text"] = tweets["text"] + appStrings[rnd]
-						print "succesfully added ending"
-					print "posting..."
-					if len(tweets["text"]) <= 140:
-						api.update_status(status = tweets["text"])
-						print tweets["text"]
-						print "succesfully posted"
+				if tweets["user"]["screen_name"].lower() != "realdonaldtrump":
+					print "retrieving...\n"
+					print tweets["text"] + "\n"
+					print "translating..."
+					tweets["text"] = translate(tweets["text"])
+					print "successfully translated\n"
+					print tweets["text"] + "\n"
+					if len(tweets["text"]) < 140:
+						print "appending..."
+						usernames = tweets["user"]["screen_name"]
+						tweets["text"] = tweets["text"] + " -" + usernames
+						print "successfully appended username"
+						if len(tweets["text"]) < 130:
+							rnd = randint(0,5)
+							appStrings = [", nahmean", "", "", ", shiiiit", ", word up", ", biatch"]
+							tweets["text"] = tweets["text"] + appStrings[rnd]
+							print "succesfully added ending"
+						print "posting..."
+						if len(tweets["text"]) <= 140:
+							api.update_status(status = tweets["text"])
+							print tweets["text"]
+							print "succesfully posted"
+						else:
+							print "Tweet too long"
+						print "### \n\n"
 					else:
-						print "Tweet too long"
-					print "### \n\n"
-				else:
-					print "tweet too long\n\n"
-				print "listening..."
+						print "tweet too long\n\n"
+					print "listening..."
 		#print tweets["user"]["screen_name"]
     def on_error(self, status):
         print status
